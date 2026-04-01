@@ -1,29 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 100  // ½ºÅÃÀÇ ÃÖ´ë Å©±â Á¤ÀÇ
+#define MAX 100  // ìŠ¤íƒì˜ ìµœëŒ€ í¬ê¸° ì •ì˜
 
 typedef struct {
     int data[MAX];
-    int top;  // ½ºÅÃÀÇ ÃÖ»ó´Ü ¿ä¼Ò¸¦ °¡¸®Å°´Â ÀÎµ¦½º
+    int top;  // ìŠ¤íƒì˜ ìµœìƒë‹¨ ìš”ì†Œë¥¼ ê°€ë¦¬í‚¤ëŠ” ì¸ë±ìŠ¤
 } Stack;
 
-// ½ºÅÃ ÃÊ±âÈ­ ÇÔ¼ö
+// ìŠ¤íƒ ì´ˆê¸°í™” í•¨ìˆ˜
 void initStack(Stack* s) {
     s->top = -1;
 }
 
-// ½ºÅÃÀÌ ºñ¾ú´ÂÁö È®ÀÎ
+// ìŠ¤íƒì´ ë¹„ì—ˆëŠ”ì§€ í™•ì¸
 int isEmpty(Stack* s) {
     return s->top == -1;
 }
 
-// ½ºÅÃÀÌ °¡µæ Ã¡´ÂÁö È®ÀÎ
+// ìŠ¤íƒì´ ê°€ë“ ì°¼ëŠ”ì§€ í™•ì¸
 int isFull(Stack* s) {
     return s->top == MAX - 1;
 }
 
-// ½ºÅÃ¿¡ ¿ä¼Ò¸¦ Ãß°¡ (push)
+// ìŠ¤íƒì— ìš”ì†Œë¥¼ ì¶”ê°€ (push)
 void push(Stack* s, int value) {
     if (isFull(s)) {
         printf("Stack overflow! Cannot push %d\n", value);
@@ -32,25 +32,25 @@ void push(Stack* s, int value) {
     s->data[++(s->top)] = value;
 }
 
-// ½ºÅÃ¿¡¼­ ¿ä¼Ò¸¦ Á¦°Å (pop)
+// ìŠ¤íƒì—ì„œ ìš”ì†Œë¥¼ ì œê±° (pop)
 int pop(Stack* s) {
     if (isEmpty(s)) {
         printf("Stack underflow! Cannot pop\n");
-        return -1;  // ¿¡·¯ °ª
+        return -1;  // ì—ëŸ¬ ê°’
     }
     return s->data[(s->top)--];
 }
 
-// ½ºÅÃÀÇ ÃÖ»ó´Ü ¿ä¼Ò¸¦ È®ÀÎ (peek)
+// ìŠ¤íƒì˜ ìµœìƒë‹¨ ìš”ì†Œë¥¼ í™•ì¸ (peek)
 int peek(Stack* s) {
     if (isEmpty(s)) {
         printf("Stack is empty! Cannot peek\n");
-        return -1;  // ¿¡·¯ °ª
+        return -1;  // ì—ëŸ¬ ê°’
     }
     return s->data[s->top];
 }
 
-// ½ºÅÃ ³»¿ë Ãâ·Â
+// ìŠ¤íƒ ë‚´ìš© ì¶œë ¥
 void display(Stack* s) {
     if (isEmpty(s)) {
         printf("Stack is empty!\n");
@@ -74,7 +74,7 @@ int main() {
     char str[MAX];
     int isValid = 1;
 
-    printf("¹®ÀÚ¿­À» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    printf("ë¬¸ìì—´ì„ ì…ë ¥í•˜ì„¸ìš”: ");
     fgets(str, MAX, stdin);
     str[strcspn(str, "\n")] = '\0';
 
@@ -92,8 +92,8 @@ int main() {
     }
     if(!isEmpty(&s)) isValid = 0;
 
-    if(isValid) printf("À¯È¿ÇÑ °ıÈ£\n");
-    else printf("À¯È¿ÇÏÁö ¾ÊÀº °ıÈ£\n");
+    if(isValid) printf("ìœ íš¨í•œ ê´„í˜¸\n");
+    else printf("ìœ íš¨í•˜ì§€ ì•Šì€ ê´„í˜¸\n");
 
     return 0;
 }   
